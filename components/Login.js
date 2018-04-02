@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableHighlight, StyleSheet, ImageBackground, KeyboardAvoidingView } from 'react-native'
+import { View, Text, TextInput, TouchableHighlight, StyleSheet, ImageBackground, KeyboardAvoidingView, AsyncStorage } from 'react-native'
 import Icon from 'react-native-vector-icons'
 import axios from 'axios'
 
@@ -8,11 +8,34 @@ class Login extends Component {
         username: '',
         password: ''
     }
+    loggedInUser = 'username'
 
     login = async() => {
-        alert("Pushed")
-    //   let response = await axios.post('https://bfsharingapp.bluefletch.com/login')
-    //   alert(response)
+        try{
+            const username = this.state.username
+            const password = this.state.password
+            const response = await axios.post('https://bfsharingapp.bluefletch.com/login', {username, password})
+            const user = response.data
+            this.storeUser(user.username)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    storeUser = async(username) => {
+            AsyncStorage.setItem('loggedInUser', username)
+            this.displayData()
+    }
+
+    displayData = async() => {
+        try{
+            let user = await AsyncStorage.getItem('loggedInUser')
+            alert(user)
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 
     render() {
@@ -73,7 +96,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 300,
+        width: 150,
         height: 50,
         backgroundColor: '#0D50D4'
     },
