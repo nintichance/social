@@ -1,17 +1,60 @@
 import React, { Component } from 'react'
-import { View, Text} from 'react-native'
+import { View, Text, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import { Actions } from 'react-native-router-flux'
 
 class Home extends Component {
-    render(){
-        return(
-            <View>
-                <Text>
-                    Hello from Home
-                </Text>
+    render() {
+        return (
+            <View style={styles.container}>
+                <ImageBackground style={{ flex: 1, resizeMode: 'cover', justifyContent: 'center', alignItems: 'center' }} source={{ uri: "https://i.imgur.com/T4qH7h3.jpg" }}>
+                        <Image style={{ width: 400, height: 100 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} />
+                        <Text style={styles.textStyle}>Share updates. Connect with friends. Be social.</Text>
+                    <TouchableHighlight onPress={()=> Actions.login()} style={styles.loginStyle}>
+                        <Text style={styles.textStyle}>
+                            <Icon name='account-circle' size={35} />
+                            Login
+                        </Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight onPress={()=> Actions.register()}style={styles.signUpStyle}>
+                        <Text style={styles.textStyle}>
+                            <Icon name='create' size={35} />
+                            Sign Up
+                        </Text>
+                    </TouchableHighlight> 
+                </ImageBackground>
             </View>
         )
     }
-}   
+}
+
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    textStyle: {
+        fontSize: 24,
+        color: 'white'
+    },
+    loginStyle: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 300,
+        height: 50,
+        backgroundColor: '#0D50D4'
+    },
+    signUpStyle: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 300,
+        height: 50,
+        backgroundColor: '#4AA8FF'
+    }
+})
 
 
 export default Home
