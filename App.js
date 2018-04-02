@@ -5,6 +5,7 @@ import { Router, Stack, Scene } from 'react-native-router-flux'
 import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import Profile from './components/Profile'
 
 export default class App extends React.Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
           <Scene key='home' component={Home} title='Home' />
           <Scene key='login' component={Login} title='Login' initial/>
           <Scene key='register'component={Register} title='Sign Up'/>
+          <Scene key='profile' component={Profile} title='Profile' initial/>
         </Stack>
       </Router>
     )
