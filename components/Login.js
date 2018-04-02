@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableHighlight, StyleSheet, ImageBackground, KeyboardAvoidingView, AsyncStorage } from 'react-native'
 import Icon from 'react-native-vector-icons'
 import axios from 'axios'
+import { Actions } from 'react-native-router-flux'
 
 class Login extends Component {
     state = {
@@ -25,7 +26,7 @@ class Login extends Component {
 
     storeUser = async(user) => {
             AsyncStorage.setItem('loggedInUser', user)
-            this.displayData()
+            Actions.profile()
     }
 
     render() {
