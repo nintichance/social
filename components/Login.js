@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableHighlight, StyleSheet, ImageBackground, KeyboardAvoidingView } from 'react-native'
 import Icon from 'react-native-vector-icons'
+import axios from 'axios'
 
 class Login extends Component {
     state = {
         username: '',
         password: ''
     }
+
+    login = async() => {
+        alert("Pushed")
+    //   let response = await axios.post('https://bfsharingapp.bluefletch.com/login')
+    //   alert(response)
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -30,9 +38,11 @@ class Login extends Component {
                             style={styles.input}
                             placeholder="Password"
                             onChangeText={(val)=> this.setState({password: val})}
+                            secureTextEntry={true}
                         />
                          <TouchableHighlight 
-                        style={styles.loginStyle}>
+                            style={styles.loginStyle}
+                            onPress={this.login.bind(this)}>
                        <Text style={styles.textStyle}>Login</Text>
                    </TouchableHighlight>
                    </KeyboardAvoidingView>
