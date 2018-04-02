@@ -16,26 +16,16 @@ class Login extends Component {
             const password = this.state.password
             const response = await axios.post('https://bfsharingapp.bluefletch.com/login', {username, password})
             const user = response.data
-            this.storeUser(user.username)
+            this.storeUser(user._id)
         }
         catch(error){
             console.log(error)
         }
     }
 
-    storeUser = async(username) => {
-            AsyncStorage.setItem('loggedInUser', username)
+    storeUser = async(user) => {
+            AsyncStorage.setItem('loggedInUser', user)
             this.displayData()
-    }
-
-    displayData = async() => {
-        try{
-            let user = await AsyncStorage.getItem('loggedInUser')
-            alert(user)
-        }
-        catch(error){
-            console.log(error)
-        }
     }
 
     render() {
