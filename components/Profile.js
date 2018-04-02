@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Image, AsyncStorage } from 'react-native'
+import { View, Text, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
 import axios from 'axios'
 
 class Profile extends Component{
@@ -28,8 +28,8 @@ class Profile extends Component{
         console.log("HIIII", this.state.username, this.state.imageUrl)
         return(
             <View>
-                    <View>
-                    <Image style={{width: 30, height: 30}} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                    <View style={styles.profileContainer}>
+                    <Image style={{width: 110, height: 110, borderRadius: 55}} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                     <Text>{this.state.username}</Text>
                     <Text>{`@${this.state.username}`}</Text>
                     </View>
@@ -37,5 +37,22 @@ class Profile extends Component{
         )
     }
 }
+
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    profileContainer: {
+        backgroundColor: '#0D50D4',
+        height: 400,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+ 
+
+})
 
 export default Profile
