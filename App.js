@@ -16,8 +16,8 @@ export default class App extends React.Component {
           <Scene key='home' component={Home} title='Home' />
           <Scene key='login' component={Login} title='Login' />
           <Scene key='register'component={Register} title='Sign Up'/>
-          <Scene key='profile' component={Profile} title='Profile' initial/>
-          <Scene key='feed' component={Feed} title="Feed" />
+          <Scene key='profile' component={Profile} title='Profile' />
+          <Scene key='feed' component={Feed} title="Feed" initial/>
         </Stack>
       </Router>
     )
@@ -26,7 +26,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
   },
 })

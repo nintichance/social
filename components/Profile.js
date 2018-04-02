@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
+import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
 import axios from 'axios'
 
 class Profile extends Component{
@@ -28,10 +28,22 @@ class Profile extends Component{
         console.log("HIIII", this.state.username, this.state.imageUrl)
         return(
             <View>
+                    <View style={styles.navContainer}>
+                        <Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} />
+                        <View style={styles.navContainer}>
+                            <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                            <TouchableOpacity>
+                                <Text style={styles.logout}>logout</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                     <View style={styles.profileContainer}>
-                    <Image style={{width: 110, height: 110, borderRadius: 55}} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                    <Text>{this.state.username}</Text>
-                    <Text>{`@${this.state.username}`}</Text>
+                        <TouchableHighlight style={styles.editButton}>
+                            <Text style={styles.name}>Edit Picture</Text>
+                        </TouchableHighlight>
+                    <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                    <Text style={styles.name}>{this.state.username}</Text>
+                    <Text style={styles.name}>{`@${this.state.username}`}</Text>
                     </View>
             </View>
         )
@@ -44,12 +56,44 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
+    navContainer: {
+        backgroundColor: '#0D50D4',
+        display: 'flex',
+        flexDirection: 'row'
+    },
     profileContainer: {
         backgroundColor: '#0D50D4',
         height: 400,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    profilePicture: {
+        width: 110, 
+        height: 110, 
+        borderRadius: 55,
+        borderWidth: 4,
+        borderColor: '#F7FCFF'
+    },
+    littlePicture: {
+        width: 50, 
+        height: 50, 
+        borderRadius: 25,
+        borderWidth: 2,
+        borderColor: '#F7FCFF'
+    },
+    name: {
+        color: '#F7FCFF',
+        fontSize: 24
+    },
+    logout: {
+        color: '#7A7A7A',
+        fontSize: 18
+    },
+    editButton: {
+        borderWidth: 2,
+        borderColor: '#F7FCFF',
+        padding: 5,
     }
  
 

@@ -3,15 +3,21 @@ import { View, Text, FlatList } from 'react-native'
 import axios from 'axios'
 
 class Feed extends Component{
+    state = {
+        feed: []
+    }
+
     componentWillMount(){
         this.getFeed()
     }
 
     getFeed = async() => {
         try{
-            const feedData = axios.get('https://bfsharingapp.bluefletch.com/feed')
-            const feed = feedData._55
-            console.log(feedData)
+            const today = new Date()
+            console.log(today)
+            const feedData = await axios.get('https://bfsharingapp.bluefletch.com/feed', today)
+            const feed = feedData.data
+            this.setState({feed: feed})
         }
         catch(error){
             console.log(error)
@@ -19,11 +25,16 @@ class Feed extends Component{
     }
 
     render(){
+        console.log("YOOO", this.state.feed)
         return(
             <View>
                 <Text>
                     Hello from Feed
                 </Text>
+                <FlatList 
+                    data={this.state.feed}
+                    renderItem={(post)=> <Text>{post.postText}</Text>}
+                    keyExtractor={(post)=>post._id}/>
             </View>
         )
     }
