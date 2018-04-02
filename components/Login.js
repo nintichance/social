@@ -26,14 +26,16 @@ class Login extends Component {
                             placeholder="Username"
                             onChangeText={(val)=> this.setState({username: val})}
                         />
+                          <TextInput
+                            style={styles.input}
+                            placeholder="Password"
+                            onChangeText={(val)=> this.setState({password: val})}
+                        />
+                         <TouchableHighlight 
+                        style={styles.loginStyle}>
+                       <Text style={styles.textStyle}>Login</Text>
+                   </TouchableHighlight>
                    </KeyboardAvoidingView>
-                   
-                    {/* <TouchableHighlight  style={styles.loginStyle}>
-                        <Text style={styles.textStyle}>
-                            <Icon name='account-circle' size={35} />
-                            Login
-                        </Text>
-                    </TouchableHighlight> */}
                 </ImageBackground>
             </View>
         )
@@ -49,6 +51,9 @@ const styles = StyleSheet.create({
     keyBoardView: {
         flex: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.001)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textStyle: {
         fontSize: 24,
@@ -63,11 +68,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#0D50D4'
     },
     input: {
-        height: 40,
-        width: 300,
+        height: 50,
+        width: 390,
         borderWidth: 1,
+        borderColor: '#BDBDBD',
         padding: 10,
-        margin: 10
+        backgroundColor: '#F7FCFF'
     }
   })
   
