@@ -13,7 +13,6 @@ class Profile extends Component{
 
     displayUser = async() => {
         try{
-            const currentUser = AsyncStorage.getItem('loggedInUser')
             const userData = await axios.get('https://bfsharingapp.bluefletch.com/user')
             const user = userData.data
             const username = user.username
@@ -23,23 +22,17 @@ class Profile extends Component{
         catch(error){
             console.log(err)
         }
-        // try{
-        //    const user = await AsyncStorage.getItem('loggedInUser')
-        //     alert("HELLO", user)
-        //     console.log(user)
-        // }   
-        // catch(error){
-        //     console.log(error)
-        // }
     }
 
     render(){
         console.log("HIIII", this.state.username, this.state.imageUrl)
         return(
             <View>
-                <Text>
-                    Hello from Profile
-                </Text>
+                    <View>
+                    <Image style={{width: 30, height: 30}} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                    <Text>{this.state.username}</Text>
+                    <Text>{`@${this.state.username}`}</Text>
+                    </View>
             </View>
         )
     }
