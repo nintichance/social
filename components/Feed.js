@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import FeedView from './FeedView'
 import axios from 'axios'
 
@@ -28,17 +28,21 @@ class Feed extends Component{
     render(){
         console.log("YOOO", this.state.feed)
         return(
-            <View>
-                <Text>
-                    How can I get this to work?
-                </Text>
+            <View style={styles.container}>
                 <FlatList 
                     data={this.state.feed}
-                    renderItem={(post)=> <FeedView postContent = {post.item.postText}/>}
+                    renderItem={(post)=> <FeedView postContent = {post.item.postText}
+                                                   user = {post.item.postUser}/>}
                     keyExtractor={(post)=>post._id}/>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#E6ECF0'
+    }
+})
 
 export default Feed
