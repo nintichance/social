@@ -9,6 +9,9 @@ import { Actions } from 'react-native-router-flux'
 import axios from 'axios'
 
 class Post extends Component{
+    state = {
+        postText: ''
+    }
     render(){
         return(
             <View>
@@ -22,6 +25,11 @@ class Post extends Component{
                             </View> 
                     </View>
                     <View style={styles.postBox}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Tell us about it..."
+                            onChangeText={(val)=> this.setState({postText: val})}
+                        />
                         <View style={styles.submit}>
                             <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
                             <TouchableOpacity><Text style={styles.postButton}>post</Text></TouchableOpacity>
@@ -51,6 +59,13 @@ const styles = StyleSheet.create({
     postButton: {
         color: '#0D50D4',
         fontSize: 20
+    },
+    input: {
+        height: 250,
+        backgroundColor: 'blue',
+        display: 'flex',
+        justifyContent: 'flex-start'
+
     },
     container: {
       backgroundColor: '#F7FCFF',
