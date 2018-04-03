@@ -10,8 +10,8 @@ import axios from 'axios'
 
 class Post extends Component{
     state = {
-        postText: '',
-        username: ''
+        username: '',
+        postText: ''
     }
     
     componentWillMount(){
@@ -26,6 +26,24 @@ class Post extends Component{
         catch(error){
             console.log(error)
         }
+    }
+
+    newPost = async() => {
+        try{
+            console.log("Clicked")
+            const username = this.state.username
+            const postText = this.state.postText
+            const response = await axios.post('https://bfsharingapp.bluefletch.com/post', {username, postText})
+            console.log(postText)
+            this.redirect()
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    redirect = () => {
+        Actions.feed()
     }
 
     render(){
@@ -48,7 +66,7 @@ class Post extends Component{
                         />
                         <View style={styles.submit}>
                             <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
-                            <TouchableOpacity><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
                         </View>
                     </View>
                 </View>
