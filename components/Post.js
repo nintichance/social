@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import NavBar from './NavBar'
@@ -10,8 +10,24 @@ import axios from 'axios'
 
 class Post extends Component{
     state = {
-        postText: ''
+        postText: '',
+        username: ''
     }
+    
+    componentWillMount(){
+        this.getUser()
+    }
+
+    getUser = async() => {
+        try{
+            const username = await AsyncStorage.getItem('loggedInUser')
+            this.setState({username: username})
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     render(){
         return(
             <View>
@@ -62,7 +78,6 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 250,
-        backgroundColor: 'blue',
         display: 'flex',
         justifyContent: 'flex-start'
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, List, ListItem, FlatList, StyleSheet } from 'react-native'
 import FeedView from './FeedView'
 import NavBar from './NavBar'
+import Footer from './Footer'
+
 import axios from 'axios'
 
 class Feed extends Component{
@@ -31,6 +33,7 @@ class Feed extends Component{
         return(
             <View style={styles.container}>
                 <NavBar />
+                <Footer />
                     <FlatList 
                         data={this.state.feed}
                         renderItem={(post)=> <FeedView postContent = {post.item.postText}
