@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
 import Feed from './Feed'
 import { Actions } from 'react-native-router-flux'
+import Footer from './Footer'
 import axios from 'axios'
 
 class Profile extends Component{
@@ -47,7 +48,9 @@ class Profile extends Component{
                     <Text style={styles.name}>{this.state.username}</Text>
                     <Text style={styles.name}>{`@${this.state.username}`}</Text>
                     </View>
+                    <Footer />
                     <Feed />
+                    
             </View>
         )
     }

@@ -16,8 +16,8 @@ export default class App extends React.Component {
           <Scene key='home' component={Home}  />
           <Scene key='login' component={Login}  />
           <Scene key='register'component={Register} />
-          <Scene key='profile' component={Profile} />
-          <Scene key='feed' component={Feed} initial/>
+          <Scene key='profile' component={Profile} initial/>
+          <Scene key='feed' component={Feed} />
         </Stack>
       </Router>
     )
