@@ -10,7 +10,12 @@ class FeedView extends Component{
     }
     
     showComments = () => {
-        this.setState({showComments: true})
+        if(this.state.showComments === false){
+            this.setState({showComments: true})
+        }
+        else{
+            this.setState({showComments: false})
+        }
     }
 
     render(){
