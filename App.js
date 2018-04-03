@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Profile from './components/Profile'
 import Feed from './components/Feed'
+import Post from './components/Post'
 
 export default class App extends React.Component {
   render() {
@@ -16,8 +17,9 @@ export default class App extends React.Component {
           <Scene key='home' component={Home}  />
           <Scene key='login' component={Login}  />
           <Scene key='register'component={Register} />
-          <Scene key='profile' component={Profile} initial/>
+          <Scene key='profile' component={Profile} />
           <Scene key='feed' component={Feed} />
+          <Scene key='post' component={Post} initial/>
         </Stack>
       </Router>
     )

@@ -31,26 +31,25 @@ class Profile extends Component{
         console.log("HIIII", this.state.username, this.state.imageUrl)
         return(
             <View>
-                    <View style={styles.navContainer}>
-                        <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
                         <View style={styles.navContainer}>
-                            <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                            <TouchableOpacity>
-                                <Text style={styles.logout}>logout</Text>
-                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
+                            <View style={styles.navContainer}>
+                                <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                                <TouchableOpacity>
+                                    <Text style={styles.logout}>logout</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.profileContainer}>
-                        <TouchableHighlight style={styles.editButton}>
-                            <Text style={styles.name}>Edit Picture</Text>
-                        </TouchableHighlight>
-                    <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                    <Text style={styles.name}>{this.state.username}</Text>
-                    <Text style={styles.name}>{`@${this.state.username}`}</Text>
-                    </View>
-                    <Footer />
-                    <Feed />
-                    
+                        <View style={styles.profileContainer}>
+                            <TouchableHighlight style={styles.editButton}>
+                                <Text style={styles.name}>Edit Picture</Text>
+                            </TouchableHighlight>
+                        <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                        <Text style={styles.name}>{this.state.username}</Text>
+                        <Text style={styles.name}>{`@${this.state.username}`}</Text>
+                        </View>
+                        <Footer />
+                        <Feed />
             </View>
         )
     }
@@ -101,8 +100,6 @@ const styles = StyleSheet.create({
         borderColor: '#F7FCFF',
         padding: 5,
     }
- 
-
 })
 
 export default Profile
