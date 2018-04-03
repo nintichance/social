@@ -26,7 +26,7 @@ class Login extends Component {
 
     storeUser = async(user) => {
             AsyncStorage.setItem('loggedInUser', user)
-            Actions.profile()
+            Actions.feed()
     }
 
     render() {

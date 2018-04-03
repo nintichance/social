@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
 import Feed from './Feed'
+import { Actions } from 'react-native-router-flux'
 import axios from 'axios'
 
 class Profile extends Component{
@@ -30,7 +31,7 @@ class Profile extends Component{
         return(
             <View>
                     <View style={styles.navContainer}>
-                        <Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} />
+                        <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
                         <View style={styles.navContainer}>
                             <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                             <TouchableOpacity>
