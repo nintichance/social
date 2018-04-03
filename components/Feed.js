@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
+import FeedView from './FeedView'
 import axios from 'axios'
 
 class Feed extends Component{
@@ -33,7 +34,7 @@ class Feed extends Component{
                 </Text>
                 <FlatList 
                     data={this.state.feed}
-                    renderItem={(post)=> <Text>{post.item.postText}</Text>}
+                    renderItem={(post)=> <FeedView postContent = {post.item.postText}/>}
                     keyExtractor={(post)=>post._id}/>
             </View>
         )
