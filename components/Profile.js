@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
+import Feed from './Feed'
 import axios from 'axios'
 
 class Profile extends Component{
@@ -45,6 +46,7 @@ class Profile extends Component{
                     <Text style={styles.name}>{this.state.username}</Text>
                     <Text style={styles.name}>{`@${this.state.username}`}</Text>
                     </View>
+                    <Feed />
             </View>
         )
     }
