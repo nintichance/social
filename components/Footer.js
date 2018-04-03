@@ -4,12 +4,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Actions } from 'react-native-router-flux'
 
 
-class Footer extends Component{
+export default class Footer extends Component{
     render(){
         return(
             <View style={styles.container}>
                 <TouchableOpacity><Icon name='home' size={29} color='grey'/></TouchableOpacity>
-                    <TouchableHighlight><View style={styles.button}><Text style={styles.textStyle}> + </Text></View></TouchableHighlight>
+                    <TouchableHighlight onPress={()=>Actions.post()}><View style={styles.button}><Text style={styles.textStyle}> + </Text></View></TouchableHighlight>
                 <TouchableOpacity><Icon name='notifications' size={29} color='grey'/></TouchableOpacity>
             </View>
         )
@@ -39,4 +39,4 @@ styles = StyleSheet.create({
         borderRadius: 25
     }
 })
-export default Footer
+

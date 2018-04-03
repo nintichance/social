@@ -8,6 +8,7 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Feed from './components/Feed'
 import Post from './components/Post'
+import NavBar from './components/NavBar'
 
 export default class App extends React.Component {
   render() {
