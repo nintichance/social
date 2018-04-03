@@ -37,7 +37,8 @@ class Feed extends Component{
                     <FlatList 
                         data={this.state.feed}
                         renderItem={(post)=> <FeedView postContent = {post.item.postText}
-                                                    user = {post.item.postUser}/>}
+                                                    user = {post.item.postUser}
+                                                    comments={post.item.comments}/>}
                         keyExtractor={(post)=>post._id}/>
             </View>
         )

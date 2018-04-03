@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
-import CommentIndex from './CommentIndex'
+import Comment from './Comment'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Actions } from 'react-native-router-flux'
 
@@ -19,9 +19,6 @@ class FeedView extends Component{
     }
 
     render(){
-        clicked = () => {
-            console.log("Clicked!")
-        }
         return(
             <View style = {styles.container}>
                 <View style={styles.userInfo}>
@@ -40,7 +37,7 @@ class FeedView extends Component{
                 <Text style={styles.postText}>
                     {this.props.postContent} I am adding to the content to see if the container size will change. I am not quite sure if it would but here's goes nothing. What is your name? My name is NInti Chance. How are tou doin?
                 </Text>
-                {this.state.showComments? <CommentIndex /> : null}
+                {this.state.showComments? <Comment comments={this.props.comments}/> : null}
             </View>
         )
     }
