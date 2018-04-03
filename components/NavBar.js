@@ -21,7 +21,7 @@ class NavBar extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=> Actions.home()}><Image style={{ width: 200, height: 50 }} source={{uri: 'https://i.imgur.com/ZsKkXw1.png'}}/></TouchableOpacity>
+                <TouchableOpacity onPress={()=> Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{uri: 'https://i.imgur.com/ZsKkXw1.png'}}/></TouchableOpacity>
                 <View style={styles.logout}>
                     <TouchableOpacity onPress={()=>Actions.profile()}><Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/></TouchableOpacity>
                     <TouchableOpacity onPress={()=>{this.logout()}} ><Text style={styles.logoutText}>logout</Text></TouchableOpacity>
