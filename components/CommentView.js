@@ -5,7 +5,7 @@ class CommentView extends Component{
     render(){
         console.log("HELOJFL", this.props.commentContent)
         return(
-            <View>
+            <View style={styles.commentContainer}>
                 <Text>
                     {this.props.commentContent}
                 </Text>
@@ -14,4 +14,9 @@ class CommentView extends Component{
     }
 }
 
+styles = StyleSheet.create({
+    commentContainer:{
+        backgroundColor: '#D1DFE8'
+    }
+})
 export default CommentView

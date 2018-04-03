@@ -37,7 +37,10 @@ class FeedView extends Component{
                 <Text style={styles.postText}>
                     {this.props.postContent} I am adding to the content to see if the container size will change. I am not quite sure if it would but here's goes nothing. What is your name? My name is NInti Chance. How are tou doin?
                 </Text>
-                {this.state.showComments? <Comment comments={this.props.comments}/> : null}
+                {this.state.showComments? <Comment 
+                                            comments={this.props.comments}
+                                            postId={this.props.postId}
+                                            username={this.props.user.username}/> : null}
             </View>
         )
     }
