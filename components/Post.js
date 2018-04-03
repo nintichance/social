@@ -54,8 +54,8 @@ class Post extends Component{
                     <View style={styles.userInfo}>
                         <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                             <View style={styles.userName}>
-                                <Text>USERNAME</Text>
-                                <Text>@USERNAME</Text>
+                                <Text>{this.state.username}</Text>
+                                <Text>{`@${this.state.username}`}</Text>
                             </View> 
                     </View>
                     <View style={styles.postBox}>
