@@ -3,20 +3,27 @@ import { View, Text, TextInupt, Image, StyleSheet, TouchableOpacity } from 'reac
 
 class CommentView extends Component{
     render(){
-        console.log("HELOJFL", this.props.commentContent)
         return(
-            <View style={styles.commentContainer}>
-                <Text>
-                    {this.props.commentContent}
-                </Text>
+            <View style={styles.comments}>
+                <View style={styles.commentBubbles}>
+                    <Text>
+                        {this.props.commentContent}
+                    </Text>
+                </View>
             </View>
         )
     }
 }
 
 styles = StyleSheet.create({
-    commentContainer:{
-        backgroundColor: '#D1DFE8'
+    comments:{
+        backgroundColor: '#D1DFE8',
+        paddingVertical: 10
+    },
+    commentBubbles:{
+        backgroundColor: '#F7FCFF',
+        padding: 10
     }
 })
+
 export default CommentView

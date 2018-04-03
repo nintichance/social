@@ -11,13 +11,10 @@ class Comment extends Component{
 
     newComment = async() => {
         try{
-            console.log('I WAS HERE I WOZZEEE')
             const postId = this.props.postId
             const username = this.props.username
             const commentText = this.state.commentText
-            console.log(postId, username, commentText)
             const response = await axios.post('https://bfsharingapp.bluefletch.com/comment', {username, postId, commentText})
-            console.log(commentText)
         }
         catch(error){
             console.log(error)
