@@ -29,11 +29,11 @@ class Feed extends Component{
         return(
             <View>
                 <Text>
-                    Hello from Feed
+                    How can I get this to work?
                 </Text>
                 <FlatList 
                     data={this.state.feed}
-                    renderItem={(post)=> <Text>{post.postText}</Text>}
+                    renderItem={(post)=> <Text>{post.item.postText}</Text>}
                     keyExtractor={(post)=>post._id}/>
             </View>
         )
