@@ -1,36 +1,30 @@
 import React, { Component } from 'react'
-import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Image, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 class NavBar extends Component{
     state = {
-        username: '',
-        imageUrl: ''
+        loggedIn: true
     }
-
-    componentWillMount(){
-        this.displayUser
-    }
-
-    displayUser = async() => {
+    logout = async() => {
         try{
-            const userData = await axios.get('https://bfsharingapp.bluefletch.com/user')
-            const user = userData.data
-            const username = user.username
-            const imageUrl = user.imageUrl
-            this.setState({username: username, imageUrl: imageUrl})
+            await AsyncStorage.clear()
+            console.log("CLICKED")
+            Actions.home()
+            this.setState({loggedIn: false})
         }
         catch(error){
-            console.log(err)
+            console.log(error)
         }
     }
 
     render(){
         return(
             <View style={styles.container}>
-                <Image style={{ width: 200, height: 50 }} source={{uri: 'https://i.imgur.com/ZsKkXw1.png'}}/>
+                <TouchableOpacity onPress={()=> Actions.home()}><Image style={{ width: 200, height: 50 }} source={{uri: 'https://i.imgur.com/ZsKkXw1.png'}}/></TouchableOpacity>
                 <View style={styles.logout}>
                     <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                    <TouchableOpacity><Text style={styles.logoutText}>logout</Text></TouchableOpacity>
+                    <TouchableOpacity><Text onPress={()=>{this.logout()}} style={styles.logoutText}>logout</Text></TouchableOpacity>
                 </View>
             </View>
         )
