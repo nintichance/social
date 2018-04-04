@@ -16,7 +16,7 @@ class Home extends Component {
                             Login
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={()=> Actions.register()}style={styles.signUpStyle}>
+                    <TouchableHighlight onPress={()=> Actions.register()} style={styles.signUpStyle}>
                         <Text style={styles.textStyle}>
                             <Icon name='create' size={35} />
                             Sign Up

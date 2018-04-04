@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
         height: 110, 
         borderRadius: 55,
         borderWidth: 4,
-        borderColor: '#F7FCFF'
+        borderColor: '#F7FCFF',
+        marginBottom: 30
     },
     littlePicture: {
         width: 50, 
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#F7FCFF',
         padding: 5,
+        marginBottom: 50
     }
 })
 

@@ -21,7 +21,6 @@ class Comment extends Component{
         }
     }
 
-
     render(){
         return(
             <View>
@@ -36,8 +35,12 @@ class Comment extends Component{
                             onChangeText={(val)=> this.setState({commentText: val})}
                         />
                         <View style={styles.submit}>
-                            <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
-                            <TouchableOpacity onPress={this.newComment.bind(this)}><Text style={styles.postButton}>reply</Text></TouchableOpacity>
+                            <TouchableOpacity>
+                                <Icon name='attach-file' size={29} color='grey'/>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={this.newComment.bind(this)}>
+                                <Text style={styles.postButton}>reply</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
             </View>

@@ -33,7 +33,7 @@ class Feed extends Component{
         return(
             <View style={styles.container}>
                 <NavBar />
-                <Footer />
+                {/* <Footer /> */}
                     <FlatList 
                         data={this.state.feed}
                         renderItem={(post)=> <FeedView

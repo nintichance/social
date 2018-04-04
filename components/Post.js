@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native'
+import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet, AsyncStorage, KeyboardAvoidingView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import NavBar from './NavBar'
@@ -49,27 +49,28 @@ class Post extends Component{
     render(){
         return(
             <View>
-                <NavBar />
-                <View style={styles.body}>
-                    <View style={styles.userInfo}>
-                        <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                            <View style={styles.userName}>
-                                <Text>{this.state.username}</Text>
-                                <Text>{`@${this.state.username}`}</Text>
-                            </View> 
-                    </View>
-                    <View style={styles.postBox}>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Tell us about it..."
-                            onChangeText={(val)=> this.setState({postText: val})}
-                        />
-                        <View style={styles.submit}>
-                            <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
-                            <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                {/* <NavBar /> */}
+                    <KeyboardAvoidingView behavior='padding'
+                                          style={styles.keyBoardView}>
+                        <View style={styles.userInfo}>
+                        <TouchableOpacity onPress={()=> Actions.profile()}><Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/></TouchableOpacity>
+                                <View style={styles.userName}>
+                                    <Text style={{fontSize: 18}}>{this.state.username}</Text>
+                                    <Text style={{color: '#7A7A7A'}}>{`@${this.state.username}`}</Text>
+                                </View> 
                         </View>
-                    </View>
-                </View>
+                        <View style={styles.postBox}>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Tell us about it..."
+                                onChangeText={(val)=> this.setState({postText: val})}
+                            />
+                            <View style={styles.submit}>
+                                <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
+                                <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                            </View>
+                        </View>
+                    </KeyboardAvoidingView>
                 <Footer />
             </View>
         )
@@ -77,9 +78,6 @@ class Post extends Component{
 }
 
 const styles = StyleSheet.create({
-    body: {
-        height: 615
-    },
     postBox: {
         height: 300,
         backgroundColor: '#F7FCFF'

@@ -21,18 +21,18 @@ class FeedView extends Component{
     render(){
         return(
             <View style = {styles.container}>
-                <View style={styles.userInfo}>
-                    <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                    <View style={styles.topStructure}>
-                        <View style={styles.userName}>
-                            <Text >{this.props.user.username}</Text>
-                            <Text>{`@${this.props.user.username}`}</Text>
-                        </View>
-                        <View style={styles.react}>
-                            <TouchableOpacity><Icon name='favorite' size={29} color='grey'/></TouchableOpacity>
-                            <TouchableOpacity onPress={()=>this.showComments()}><Icon name='mode-comment' size={29} color='grey'/></TouchableOpacity>
-                        </View>    
+                <View style={styles.postHeader}>
+                    <View style={styles.userInfo}>
+                        <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                            <View style={styles.userName}>
+                                <Text style={{fontSize: 18}}>{this.props.user.username}</Text>
+                                <Text style={{color: '#7A7A7A'}}>{`@${this.props.user.username}`}</Text>
+                            </View>
                     </View>
+                        <View style={styles.reactContainer}>
+                            <TouchableOpacity><Icon name='favorite' size={29} color='#BDBDBD'/></TouchableOpacity>
+                            <TouchableOpacity onPress={()=>this.showComments()}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
+                        </View>    
                 </View>
                 <Text style={styles.postText}>
                     {this.props.postContent} I am adding to the content to see if the container size will change. I am not quite sure if it would but here's goes nothing. What is your name? My name is NInti Chance. How are tou doin?
@@ -57,25 +57,31 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderWidth: 2,
         borderColor: '#F7FCFF',
-        margin: 10
+        marginLeft: 10
     },
     userInfo: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     userName: {
-        paddingTop: 20
+        paddingLeft: 10
     },
     postText: {
         padding: 15
     },
-    react: { 
+    reactContainer: { 
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingRight: 20,
+        width: 100,
+        justifyContent: 'space-between'
     },
-    topStructure: {
+    postHeader: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 10
     }
   })
   
