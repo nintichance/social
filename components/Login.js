@@ -34,31 +34,30 @@ class Login extends Component {
             <View style={styles.container}>
                 <ImageBackground 
                     style={{ flex: 1, 
-                    resizeMode: 'cover', 
-                    justifyContent: 'center', 
-                    alignItems: 'center' }} 
+                             display: 'flex',
+                             resizeMode: 'cover' }} 
                     source={{ uri: "https://i.imgur.com/T4qH7h3.jpg" }}>
                    <KeyboardAvoidingView 
                     behavior='padding' 
                     style={styles.keyBoardView}>
-                        <Text>{this.state.username}</Text>
-                        <Text>{this.state.password}</Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Username"
-                            onChangeText={(val)=> this.setState({username: val})}
-                        />
-                          <TextInput
-                            style={styles.input}
-                            placeholder="Password"
-                            onChangeText={(val)=> this.setState({password: val})}
-                            secureTextEntry={true}
-                        />
-                         <TouchableHighlight 
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Username"
+                                onChangeText={(val)=> this.setState({username: val})}
+                            />
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Password"
+                                onChangeText={(val)=> this.setState({password: val})}
+                                secureTextEntry={true}
+                            />
+                        </View>
+                            <TouchableHighlight 
                             style={styles.loginStyle}
                             onPress={this.login.bind(this)}>
-                       <Text style={styles.textStyle}>Login</Text>
-                   </TouchableHighlight>
+                                <Text style={styles.textStyle}>Login</Text>
+                            </TouchableHighlight>
                    </KeyboardAvoidingView>
                 </ImageBackground>
             </View>
@@ -70,14 +69,15 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#fff'
     },
     keyBoardView: {
-        flex: 1,
+        height: 300,
         backgroundColor: 'rgba(0, 0, 0, 0.001)',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        marginTop: 100
     },
     textStyle: {
         fontSize: 24,
