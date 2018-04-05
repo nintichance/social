@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet } from 'react-native'
+import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet, ScrollView } from 'react-native'
 import Feed from './Feed'
 import { Actions } from 'react-native-router-flux'
 import Footer from './Footer'
@@ -31,6 +31,7 @@ class Profile extends Component{
         console.log("HIIII", this.state.username, this.state.imageUrl)
         return(
             <View>
+                <ScrollView>
                         <View style={styles.navContainer}>
                             <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
                             <View style={styles.navContainer}>
@@ -50,6 +51,7 @@ class Profile extends Component{
                         </View>
                         <Footer />
                         <Feed />
+                </ScrollView>
             </View>
         )
     }
