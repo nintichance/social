@@ -21,7 +21,7 @@ export default class App extends React.Component {
           <Scene key='profile' component={Profile} />
           <Scene key='feed' component={Feed} initial/>
           <Scene key='post' component={Post} />
-          <Scene key='editPost' component={EditPost}/>
+          <Scene key='editPost' component={EditPost} />
         </Stack>
       </Router>
     )

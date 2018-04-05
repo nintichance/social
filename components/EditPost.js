@@ -11,7 +11,7 @@ import axios from 'axios'
 class EditPost extends Component{
     state = {
         username: '',
-        postText: ''
+        updatedPost: ''
     }
     
     componentWillMount(){
@@ -28,13 +28,14 @@ class EditPost extends Component{
         }
     }
 
+
     newPost = async() => {
         try{
             console.log("Clicked")
-            const username = this.state.username
-            const postText = this.state.postText
-            const response = await axios.post('https://bfsharingapp.bluefletch.com/post', {username, postText})
-            console.log(postText)
+            const postId = this.props.postId
+            const updatedPost = this.state.updatedPost
+            const response = await axios.post(`https://bfsharingapp.bluefletch.com/post/${postId}`, {postId, updatedPost})
+            console.log(updatedPost)
             this.redirect()
         }
         catch(error){
@@ -47,9 +48,10 @@ class EditPost extends Component{
     }
 
     render(){
+        console.log(this.props.postId)
         return(
             <View>
-                {/* <NavBar /> */}
+                <NavBar />
                     <KeyboardAvoidingView behavior='padding'
                                           style={styles.keyBoardView}>
                         <View style={styles.userInfo}>
@@ -59,15 +61,18 @@ class EditPost extends Component{
                                     <Text style={{color: '#7A7A7A'}}>{`@${this.state.username}`}</Text>
                                 </View> 
                         </View>
+                        <Text style={styles.postText}>
+                                {this.props.originalPostContent}
+                        </Text>
                         <View style={styles.postBox}>
                             <TextInput
                                 style={styles.input}
-                                placeholder="Tell us about it..."
-                                onChangeText={(val)=> this.setState({postText: val})}
+                                placeholder={this.props.originalPostContent}
+                                onChangeText={(val)=> this.setState({updatedPost: val})}
                             />
                             <View style={styles.submit}>
                                 <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
-                                <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                                <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>update</Text></TouchableOpacity>
                             </View>
                         </View>
                     </KeyboardAvoidingView>

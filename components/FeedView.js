@@ -30,7 +30,7 @@ class FeedView extends Component{
                             </View>
                     </View>
                         <View style={styles.reactContainer}>
-                            <TouchableOpacity onPress={()=> Actions.editPost()} ><Icon name='mode-edit' size={29} color='#BDBDBD'/></TouchableOpacity>
+                            <TouchableOpacity onPress={()=> Actions.editPost({postId: this.props.postId, originalPostContent: this.props.postContent})} ><Icon name='mode-edit' size={29} color='#BDBDBD'/></TouchableOpacity>
                             <TouchableOpacity><Icon name='favorite' size={29} color='#BDBDBD'/></TouchableOpacity>
                             <TouchableOpacity onPress={()=>this.showComments()}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
                         </View>    

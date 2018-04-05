@@ -51,25 +51,25 @@ class Post extends Component{
             <View>
                 {/* <NavBar /> */}
                     <KeyboardAvoidingView behavior='padding'
-                                          style={styles.keyBoardView}>
-                        <View style={styles.userInfo}>
-                        <TouchableOpacity onPress={()=> Actions.profile()}><Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/></TouchableOpacity>
-                                <View style={styles.userName}>
-                                    <Text style={{fontSize: 18}}>{this.state.username}</Text>
-                                    <Text style={{color: '#7A7A7A'}}>{`@${this.state.username}`}</Text>
-                                </View> 
-                        </View>
-                        <View style={styles.postBox}>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Tell us about it..."
-                                onChangeText={(val)=> this.setState({postText: val})}
-                            />
-                            <View style={styles.submit}>
-                                <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
-                                <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                                            style={styles.keyBoardView}>
+                            <View style={styles.userInfo}>
+                            <TouchableOpacity onPress={()=> Actions.profile()}><Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/></TouchableOpacity>
+                                    <View style={styles.userName}>
+                                        <Text style={{fontSize: 18}}>{this.state.username}</Text>
+                                        <Text style={{color: '#7A7A7A'}}>{`@${this.state.username}`}</Text>
+                                    </View> 
                             </View>
-                        </View>
+                            <View style={styles.postBox}>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Tell us about it..."
+                                    onChangeText={(val)=> this.setState({postText: val})}
+                                />
+                                <View style={styles.submit}>
+                                    <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
+                                    <TouchableOpacity onPress={this.newPost.bind(this)}><Text style={styles.postButton}>post</Text></TouchableOpacity>
+                                </View>
+                            </View>
                     </KeyboardAvoidingView>
                 <Footer />
             </View>
