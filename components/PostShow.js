@@ -3,10 +3,26 @@ import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, Sty
 import NavBar from './NavBar'
 import Footer from './Footer'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
+import axios from 'axios'
 
 class PostShow extends Component{
-    
+    state={
+        commentText: ''
+    }
+
+    newComment = async() => {
+        try{
+            console.log("CLICKED")
+            const postId = this.props.postId
+            const username = this.props.username
+            const commentText = this.state.commentText
+            const response = await axios.post('https://bfsharingapp.bluefletch.com/comment', {username, postId, commentText})
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     render(){
         return(
             <View>
@@ -46,6 +62,9 @@ class PostShow extends Component{
                                     placeholder="Let them know!"
                                     onChangeText={(val)=> this.setState({commentText: val})}
                                 />
+                                <TouchableOpacity onPress={this.newComment.bind(this)}>
+                                    <Text style={styles.postButton}>reply</Text>
+                                </TouchableOpacity>
                             </View>
                         <Footer />
                     </View>
@@ -102,6 +121,10 @@ styles = StyleSheet.create({
     postBox: {
         height: 300,
         backgroundColor: '#F7FCFF'
+    },
+    postButton: {
+        color: '#0D50D4',
+        fontSize: 20
     },
     input: {
         height: 250,

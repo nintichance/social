@@ -34,7 +34,8 @@ class FeedView extends Component{
                             <TouchableOpacity><Icon name='favorite' size={29} color='#BDBDBD'/></TouchableOpacity>
                             <TouchableOpacity onPress={()=> Actions.postShow({username: this.props.user.username, 
                                                                               comments: this.props.comments, 
-                                                                              postContent: this.props.postContent})}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
+                                                                              postContent: this.props.postContent,
+                                                                              postId: this.props.postId})}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
                         </View>    
                 </View>
                 <Text style={styles.postText}>
