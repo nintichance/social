@@ -127,7 +127,7 @@ styles = StyleSheet.create({
         fontSize: 20
     },
     input: {
-        height: 250,
+        paddingBottom: 200,
         display: 'flex',
         justifyContent: 'flex-start'
 

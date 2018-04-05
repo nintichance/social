@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet, ScrollView, ActivityIndicator } from 'react-native'
 import Feed from './Feed'
 import { Actions } from 'react-native-router-flux'
 import Footer from './Footer'
@@ -26,9 +26,15 @@ class Profile extends Component{
             console.log(err)
         }
     }
-
     render(){
-        console.log("HIIII", this.state.username, this.state.imageUrl)
+        if (this.state.imageUrl === '' || this.state.username === '') {
+            console.log("Not loaded")
+            return (
+                <View style={styles.activity}>
+                    <ActivityIndicator large />
+                </View>
+            )
+          }
         return(
             <View>
                 <ScrollView>
@@ -45,9 +51,9 @@ class Profile extends Component{
                             <TouchableHighlight style={styles.editButton}>
                                 <Text style={styles.name}>Edit Picture</Text>
                             </TouchableHighlight>
-                        <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                        <Text style={styles.name}>{this.state.username}</Text>
-                        <Text style={styles.name}>{`@${this.state.username}`}</Text>
+                            <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                            <Text style={styles.name}>{this.state.username}</Text>
+                            <Text style={styles.name}>{`@${this.state.username}`}</Text>
                         </View>
                         <Footer />
                         <Feed />
@@ -103,6 +109,12 @@ const styles = StyleSheet.create({
         borderColor: '#F7FCFF',
         padding: 5,
         marginBottom: 50
+    },
+    activity: {
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
