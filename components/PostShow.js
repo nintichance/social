@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, StyleSheet, FlatList } from 'react-native'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -27,13 +27,16 @@ class PostShow extends Component{
                             </View>
                         </View>
                         <Text style={styles.postText}>
-                            {this.props.postContent} I am adding to the content to see if the container size will change. I am not quite sure if it would but here's goes nothing. What is your name? My name is NInti Chance. How are tou doin?
+                            {this.props.postContent} Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.
                         </Text>
                     </View>
                     <View style={styles.comments}>
-                        <Text>
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                        </Text>
+                        <FlatList 
+                            data={this.props.comments}
+                            renderItem={(comment)=> <View>
+                                <Text>{comment.item.commentText}</Text>
+                            </View>}
+                            keyExtractor={(comment)=>comment._id}/>
                     </View>
                     <Footer />
                 </View>
