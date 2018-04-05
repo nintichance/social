@@ -44,6 +44,7 @@ class Feed extends Component{
                     <View style={styles.navBar}>
                         <TouchableOpacity onPress={()=> Actions.feed()}><Image style={{ width: 200, height: 50, paddingHorizontal: 10 }} source={{uri: 'https://i.imgur.com/ZsKkXw1.png'}}/></TouchableOpacity>
                         <View style={styles.logout}>
+                            <TouchableOpacity onPress={()=>Actions.post()}><Image style={styles.newPost} source={{uri: 'https://i.imgur.com/XRl5vYB.png' }}/></TouchableOpacity>
                             <TouchableOpacity onPress={()=>Actions.profile()}><Image style={styles.logoutPicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/></TouchableOpacity>
                             <TouchableOpacity onPress={()=>{this.logout()}} ><Text style={styles.logoutText}>logout</Text></TouchableOpacity>
                         </View>
@@ -86,6 +87,14 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         borderWidth: 2,
         borderColor: '#F7FCFF'
+    },
+    newPost: {
+        width: 36, 
+        height: 36, 
+        borderRadius: 18,
+        borderWidth: 2,
+        borderColor: '#F7FCFF',
+        marginRight: 5
     },
     logout: {
         display: 'flex',

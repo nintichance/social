@@ -1,31 +1,20 @@
 import React, { Component } from 'react'
 import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, StyleSheet, FlatList, ScrollView } from 'react-native'
-import NavBar from './NavBar'
-import Footer from './Footer'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import axios from 'axios'
 
 class PostShow extends Component{
     state={
-        commentText: ''
+        commentText: '',
+        showEdit: false
     }
 
     newComment = async() => {
         try{
-            console.log("CLICKED")
             const postId = this.props.postId
             const username = this.props.username
             const commentText = this.state.commentText
             const response = await axios.post('https://bfsharingapp.bluefletch.com/comment', {username, postId, commentText})
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
-    editComment = async() => {
-        try{
-            
         }
         catch(error){
             console.log(error)
@@ -42,8 +31,8 @@ class PostShow extends Component{
                                 <View style={styles.userInfo}>
                                     <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                                         <View style={styles.userName}>
-                                            <Text >{this.props.username}</Text>
-                                            <Text>{`@${this.props.username}`}</Text>
+                                            <Text style={{fontSize: 18}}>{this.props.username}</Text>
+                                            <Text style={{color: '#7A7A7A'}}>{`@${this.props.username}`}</Text>
                                         </View>
                                 </View>
                                         <View style={styles.react}>
@@ -61,12 +50,14 @@ class PostShow extends Component{
                                 renderItem={(comment)=> 
                                     <View style={styles.commentBubble}>
                                         <Text style={styles.commentTextStyle}>{comment.item.commentText}</Text>
-                                        <TouchableOpacity onPress={this.editComment.bind(this)}>
-                                            <Text style = {styles.editText}>
-                                                edit
-                                            </Text>
+                                        <TouchableOpacity style={{alignSelf: 'flex-end', paddingRight: 5, paddingBottom: 5}}
+                                                           >
+                                            <Icon onPress={()=> this.setState({showEdit: true})} name='mode-edit' size={29} color='#BDBDBD'/>
                                         </TouchableOpacity>
-                                    </View>}
+
+                                        {this.state.showEdit ? <Text>Hi</Text> : null}
+                                    </View>
+                                    }
                                 keyExtractor={(comment)=>comment._id}/>
                         </View>
                             <View style={styles.postBox}>
@@ -104,7 +95,6 @@ styles = StyleSheet.create({
     },
     commentBubble: {
         backgroundColor: '#F7FCFF',
-        borderRadius: 50,
         margin: 5,
         marginHorizontal: 10,
         paddingHorizontal: 5,
@@ -148,14 +138,14 @@ styles = StyleSheet.create({
         flexDirection: 'row'
     },
     postBox: {
-        height: 300,
         backgroundColor: '#F7FCFF'
     },
     postButton: {
         color: '#0D50D4',
         fontSize: 16,
         alignSelf: 'flex-end',
-        paddingRight: 10
+        paddingRight: 10,
+        paddingBottom: 10
     },
     postButtonContainer: {
         display: 'flex'

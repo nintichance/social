@@ -56,6 +56,7 @@ class Profile extends Component{
                         <View style={styles.navContainer}>
                             <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
                             <View style={styles.logoutContainer}>
+                                <TouchableOpacity onPress={()=>Actions.post()}><Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/XRl5vYB.png' }}/></TouchableOpacity>
                                 <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                                 <TouchableOpacity>
                                     <Text style={styles.logout}>logout</Text>

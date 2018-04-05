@@ -20,7 +20,7 @@ class Login extends Component {
             this.storeUser(user.username)
         }
         catch(error){
-            console.log(error)
+            alert("Login failed. Please try again.")
         }
     }
 
