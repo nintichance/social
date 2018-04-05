@@ -27,6 +27,16 @@ class Feed extends Component{
         }
     }
 
+    logout = async() => {
+        try{
+            await axios.post('https://bfsharingapp.bluefletch.com/logout')
+            Actions.home()
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     render(){
         console.log("YOOO", this.state.feed)
         return(

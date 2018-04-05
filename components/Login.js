@@ -38,8 +38,8 @@ class Login extends Component {
                              resizeMode: 'cover' }} 
                     source={{ uri: "https://i.imgur.com/T4qH7h3.jpg" }}>
                    <KeyboardAvoidingView 
-                    behavior='padding' 
-                    style={styles.keyBoardView}>
+                        behavior='padding' 
+                        style={styles.keyBoardView}>
                         <View style={styles.inputContainer}>
                             <TextInput
                                 style={styles.input}

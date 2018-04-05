@@ -66,7 +66,7 @@ class Profile extends Component{
                             <TouchableHighlight style={styles.editButton}>
                                 <Text style={styles.name}>Edit Picture</Text>
                             </TouchableHighlight>
-                            <Image style={styles.profilePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                            <Image style={styles.profilePicture} source={{uri: `https://bfsharingapp.bluefletch.com/${this.state.imageUrl}` }}/>
                             <Text style={styles.name}>{this.state.username}</Text>
                             <Text style={styles.name}>{`@${this.state.username}`}</Text>
                         </View>

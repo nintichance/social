@@ -17,11 +17,11 @@ export default class App extends React.Component {
     return (
       <Router>
         <Stack key='root'>
-          <Scene key='home' component={Home}  initial/>
+          <Scene key='home' component={Home}  />
           <Scene key='login' component={Login}  />
           <Scene key='register'component={Register} />
           <Scene key='profile' component={Profile} />
-          <Scene key='feed' component={Feed} />
+          <Scene key='feed' component={Feed} initial/>
           <Scene key='post' component={Post} />
           <Scene key='editPost' component={EditPost} />
           <Scene key='postShow' component={PostShow} />
