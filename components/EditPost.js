@@ -11,7 +11,7 @@ import axios from 'axios'
 class EditPost extends Component{
     state = {
         username: '',
-        updatedPost: ''
+        newPostText: ''
     }
     
     componentWillMount(){
@@ -32,10 +32,11 @@ class EditPost extends Component{
     newPost = async() => {
         try{
             console.log("Clicked")
-            const postId = this.props.postId
-            const updatedPost = this.state.updatedPost
-            const response = await axios.post(`https://bfsharingapp.bluefletch.com/post/${postId}`, {postId, updatedPost})
-            console.log(updatedPost)
+            const id = this.props.postId
+            const newPostText = this.state.newPostText
+            const username = this.state.username
+            const response = await axios.put(`https://bfsharingapp.bluefletch.com/post/${id}`, {id, newPostText, username})
+            console.log(newPostText)
             this.redirect()
         }
         catch(error){
@@ -68,7 +69,7 @@ class EditPost extends Component{
                             <TextInput
                                 style={styles.input}
                                 placeholder={this.props.originalPostContent}
-                                onChangeText={(val)=> this.setState({updatedPost: val})}
+                                onChangeText={(val)=> this.setState({newPostText: val})}
                             />
                             <View style={styles.submit}>
                                 <TouchableOpacity><Icon name='attach-file' size={29} color='grey'/></TouchableOpacity>
