@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, List, ListItem, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import FeedView from './FeedView'
+import { Actions } from 'react-native-router-flux'
 import axios from 'axios'
 
 class Feed extends Component{
