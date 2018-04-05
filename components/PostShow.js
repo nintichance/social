@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, StyleSheet, FlatList } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, TouchableHighlight, StyleSheet, FlatList, ScrollView } from 'react-native'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -10,50 +10,68 @@ class PostShow extends Component{
     render(){
         return(
             <View>
-                <NavBar />
-                <View style={styles.postShow}>
-                    <View style={styles.postBody}>
-                        <View style={styles.userInfo}>
-                            <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                            <View style={styles.topStructure}>
-                                <View style={styles.userName}>
-                                    <Text >{this.props.username}</Text>
-                                    <Text>{`@${this.props.username}`}</Text>
+                <ScrollView>
+                    <NavBar />
+                    <View style={styles.postShow}>
+                        <View style={styles.postBody}>
+                            <View style={styles.userInfo}>
+                                <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                                <View style={styles.topStructure}>
+                                    <View style={styles.userName}>
+                                        <Text >{this.props.username}</Text>
+                                        <Text>{`@${this.props.username}`}</Text>
+                                    </View>
+                                    <View style={styles.react}>
+                                        <TouchableOpacity><Icon name='favorite' size={29} color='grey'/></TouchableOpacity>
+                                        <TouchableOpacity onPress={()=>Actions.postShow()}><Icon name='mode-comment' size={29} color='grey'/></TouchableOpacity>
+                                    </View>    
                                 </View>
-                                <View style={styles.react}>
-                                    <TouchableOpacity><Icon name='favorite' size={29} color='grey'/></TouchableOpacity>
-                                    <TouchableOpacity onPress={()=>Actions.postShow()}><Icon name='mode-comment' size={29} color='grey'/></TouchableOpacity>
-                                </View>    
                             </View>
+                            <Text style={styles.postText}>
+                                {this.props.postContent} Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.
+                            </Text>
                         </View>
-                        <Text style={styles.postText}>
-                            {this.props.postContent} Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.
-                        </Text>
+                        <View style={styles.comments}>
+                            <FlatList 
+                                data={this.props.comments}
+                                renderItem={(comment)=> 
+                                    <View style={styles.commentBubble}>
+                                        <Text style={styles.commentTextStyle}>{comment.item.commentText}Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.</Text>
+                                    </View>}
+                                keyExtractor={(comment)=>comment._id}/>
+                        </View>
+                            <View style={styles.postBox}>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Let them know!"
+                                    onChangeText={(val)=> this.setState({commentText: val})}
+                                />
+                            </View>
+                        <Footer />
                     </View>
-                    <View style={styles.comments}>
-                        <FlatList 
-                            data={this.props.comments}
-                            renderItem={(comment)=> <View>
-                                <Text>{comment.item.commentText}</Text>
-                            </View>}
-                            keyExtractor={(comment)=>comment._id}/>
-                    </View>
-                    <Footer />
-                </View>
+                </ScrollView>
             </View>
         )
     }
 }
 
 styles = StyleSheet.create({
-    // postShow:{
-    //     height: 700
-    // },
     postBody: {
         backgroundColor: '#F7FCFF'
     },
     comments: {
-        backgroundColor: '#D1DFE8'
+        backgroundColor: '#D1DFE8',
+        paddingVertical: 5
+    },
+    commentBubble: {
+        backgroundColor: '#F7FCFF',
+        borderRadius: 40,
+        margin: 5,
+        marginHorizontal: 10,
+        paddingHorizontal: 5
+    },
+    commentTextStyle:{
+        padding: 10
     },
     littlePicture: {
         width: 50, 
@@ -80,6 +98,16 @@ styles = StyleSheet.create({
     topStructure: {
         display: 'flex',
         flexDirection: 'row'
-    }
+    },
+    postBox: {
+        height: 300,
+        backgroundColor: '#F7FCFF'
+    },
+    input: {
+        height: 250,
+        display: 'flex',
+        justifyContent: 'flex-start'
+
+    },
 })
 export default PostShow
