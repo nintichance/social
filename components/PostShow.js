@@ -23,35 +23,49 @@ class PostShow extends Component{
         }
     }
 
+    editComment = async() => {
+        try{
+            
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     render(){
         return(
             <View>
                 <ScrollView>
                     <View style={styles.postShow}>
                         <View style={styles.postBody}>
-                            <View style={styles.userInfo}>
-                                <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
-                                <View style={styles.topStructure}>
-                                    <View style={styles.userName}>
-                                        <Text >{this.props.username}</Text>
-                                        <Text>{`@${this.props.username}`}</Text>
-                                    </View>
-                                    <View style={styles.react}>
-                                        <TouchableOpacity><Icon name='favorite' size={29} color='grey'/></TouchableOpacity>
-                                        <TouchableOpacity onPress={()=>Actions.postShow()}><Icon name='mode-comment' size={29} color='grey'/></TouchableOpacity>
-                                    </View>    
+                            <View style={styles.postHeader}>
+                                <View style={styles.userInfo}>
+                                    <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
+                                        <View style={styles.userName}>
+                                            <Text >{this.props.username}</Text>
+                                            <Text>{`@${this.props.username}`}</Text>
+                                        </View>
                                 </View>
+                                        <View style={styles.react}>
+                                            <TouchableOpacity><Icon name='favorite' size={29} color='#BDBDBD'/></TouchableOpacity>
+                                            <TouchableOpacity onPress={()=>Actions.postShow()}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
+                                        </View>    
                             </View>
                             <Text style={styles.postText}>
-                                {this.props.postContent} Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.
+                                    {this.props.postContent} 
                             </Text>
-                        </View>
+                        </View>    
                         <View style={styles.comments}>
                             <FlatList 
                                 data={this.props.comments}
                                 renderItem={(comment)=> 
                                     <View style={styles.commentBubble}>
-                                        <Text style={styles.commentTextStyle}>{comment.item.commentText}Fluff it up a little and hypnotize it. You can get away with a lot. This is gonna be a happy little seascape. The least little bit can do so much.</Text>
+                                        <Text style={styles.commentTextStyle}>{comment.item.commentText}</Text>
+                                        <TouchableOpacity onPress={this.editComment.bind(this)}>
+                                            <Text style = {styles.editText}>
+                                                edit
+                                            </Text>
+                                        </TouchableOpacity>
                                     </View>}
                                 keyExtractor={(comment)=>comment._id}/>
                         </View>
@@ -61,7 +75,8 @@ class PostShow extends Component{
                                     placeholder="Let them know!"
                                     onChangeText={(val)=> this.setState({commentText: val})}
                                 />
-                                <TouchableOpacity onPress={this.newComment.bind(this)}>
+                                <TouchableOpacity onPress={this.newComment.bind(this)}
+                                                  style={styles.postButtonContainer}>
                                     <Text style={styles.postButton}>reply</Text>
                                 </TouchableOpacity>
                             </View>
@@ -76,19 +91,33 @@ styles = StyleSheet.create({
     postBody: {
         backgroundColor: '#F7FCFF'
     },
+    postHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: 10
+    },
     comments: {
         backgroundColor: '#D1DFE8',
         paddingVertical: 5
     },
     commentBubble: {
         backgroundColor: '#F7FCFF',
-        borderRadius: 40,
+        borderRadius: 50,
         margin: 5,
         marginHorizontal: 10,
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
+        display: 'flex'
+    },
+    editText: {
+        alignSelf: 'flex-end',
+        paddingRight: 20,
+        paddingBottom: 20
     },
     commentTextStyle:{
-        padding: 10
+        paddingHorizontal: 20,
+        paddingTop: 20
     },
     littlePicture: {
         width: 50, 
@@ -100,7 +129,8 @@ styles = StyleSheet.create({
     },
     userInfo: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     },
     userName: {
         paddingTop: 20
@@ -110,7 +140,8 @@ styles = StyleSheet.create({
     },
     react: { 
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingRight: 10
     },
     topStructure: {
         display: 'flex',
@@ -122,10 +153,16 @@ styles = StyleSheet.create({
     },
     postButton: {
         color: '#0D50D4',
-        fontSize: 20
+        fontSize: 16,
+        alignSelf: 'flex-end',
+        paddingRight: 10
+    },
+    postButtonContainer: {
+        display: 'flex'
     },
     input: {
-        paddingBottom: 200,
+        padding: 10,
+        paddingBottom: 100,
         display: 'flex',
         justifyContent: 'flex-start'
 

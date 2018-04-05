@@ -55,7 +55,7 @@ class Profile extends Component{
                 <ScrollView>
                         <View style={styles.navContainer}>
                             <TouchableOpacity onPress={()=>Actions.feed()}><Image style={{ width: 200, height: 50 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} /></TouchableOpacity>
-                            <View style={styles.navContainer}>
+                            <View style={styles.logoutContainer}>
                                 <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                                 <TouchableOpacity>
                                     <Text style={styles.logout}>logout</Text>
@@ -93,7 +93,9 @@ const styles = StyleSheet.create({
     navContainer: {
         backgroundColor: '#0D50D4',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     profileContainer: {
         backgroundColor: '#0D50D4',
@@ -111,11 +113,12 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     littlePicture: {
-        width: 50, 
-        height: 50, 
-        borderRadius: 25,
+        width: 40, 
+        height: 40, 
+        borderRadius: 20,
         borderWidth: 2,
-        borderColor: '#F7FCFF'
+        borderColor: '#F7FCFF',
+        marginRight: 10
     },
     name: {
         color: '#F7FCFF',
@@ -123,7 +126,12 @@ const styles = StyleSheet.create({
     },
     logout: {
         color: '#7A7A7A',
-        fontSize: 18
+        fontSize: 18,
+        marginRight: 10
+    },
+    logoutContainer: {
+        display: 'flex',
+        flexDirection: 'row'
     },
     editButton: {
         borderWidth: 2,

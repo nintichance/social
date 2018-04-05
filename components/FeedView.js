@@ -5,18 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Actions } from 'react-native-router-flux'
 
 class FeedView extends Component{
-    state = {
-        showComments: false
-    }
-    
-    // showComments = () => {
-    //     if(this.state.showComments === false){
-    //         this.setState({showComments: true})
-    //     }
-    //     else{
-    //         this.setState({showComments: false})
-    //     }
-    // }
 
     render(){
         return(
@@ -39,12 +27,8 @@ class FeedView extends Component{
                         </View>    
                 </View>
                 <Text style={styles.postText}>
-                    {this.props.postContent} I am adding to the content to see if the container size will change. I am not quite sure if it would but here's goes nothing. What is your name? My name is NInti Chance. How are tou doin?
+                    {this.props.postContent} You create the dream - then you bring it into your world. All you need to paint is a few tools, a little instruction, and a vision in your mind. Anytime you learn something your time and energy are not wasted. That's crazy
                 </Text>
-                {this.state.showComments? <Comment 
-                                            comments={this.props.comments}
-                                            postId={this.props.postId}
-                                            username={this.props.user.username}/> : null}
             </View>
         )
     }

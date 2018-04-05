@@ -56,7 +56,6 @@ class Feed extends Component{
                                                         comments={post.item.comments}
                                                         postId={post.item._id}/>}
                             keyExtractor={(post)=>post._id}/>
-                  
                 </View>
         )
     }
