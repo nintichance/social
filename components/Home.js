@@ -7,7 +7,12 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground style={{ flex: 1, resizeMode: 'cover', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }} source={{ uri: "https://i.imgur.com/LjvCh4t.jpg" }}>
+                <ImageBackground style={{ flex: 1, 
+                                          resizeMode: 'cover', 
+                                          display: 'flex', 
+                                          justifyContent: 'space-around', 
+                                          alignItems: 'center'}} 
+                                 source={{ uri: "https://i.imgur.com/LjvCh4t.jpg" }}>
                     <View style={styles.title}>  
                         <Image style={{ width: 375, height: 75 }} source={{ uri: 'https://i.imgur.com/EmGU0lD.png?1' }} />
                         <Text style={styles.textStyle}>Share updates. Connect with friends. Be social.</Text>
