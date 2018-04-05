@@ -27,7 +27,6 @@ class PostShow extends Component{
         return(
             <View>
                 <ScrollView>
-                    <NavBar />
                     <View style={styles.postShow}>
                         <View style={styles.postBody}>
                             <View style={styles.userInfo}>
@@ -66,7 +65,6 @@ class PostShow extends Component{
                                     <Text style={styles.postButton}>reply</Text>
                                 </TouchableOpacity>
                             </View>
-                        <Footer />
                     </View>
                 </ScrollView>
             </View>

@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, TextInput, Text, TouchableOpacity, StyleSheet, AsyncStorage, KeyboardAvoidingView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
-import NavBar from './NavBar'
-import Footer from './Footer'
-
 import { Actions } from 'react-native-router-flux'
 import axios from 'axios'
 
@@ -52,7 +48,6 @@ class EditPost extends Component{
         console.log(this.props.postId)
         return(
             <View>
-                <NavBar />
                     <KeyboardAvoidingView behavior='padding'
                                           style={styles.keyBoardView}>
                         <View style={styles.userInfo}>
@@ -77,7 +72,6 @@ class EditPost extends Component{
                             </View>
                         </View>
                     </KeyboardAvoidingView>
-                <Footer />
             </View>
         )
     }

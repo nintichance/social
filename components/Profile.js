@@ -1,17 +1,32 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet, ScrollView, ActivityIndicator } from 'react-native'
+import { View, Text, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, StyleSheet, ScrollView, ActivityIndicator, FlatList } from 'react-native'
 import Feed from './Feed'
+import FeedView from './FeedView'
 import { Actions } from 'react-native-router-flux'
-import Footer from './Footer'
 import axios from 'axios'
 
 class Profile extends Component{
     state = {
         username: '',
         imageUrl: '',
+        feed: ''
     }
     componentWillMount(){
         this.displayUser()
+        this.getFeed()
+    }
+
+    getFeed = async() => {
+        try{
+            const today = new Date()
+            console.log(today)
+            const feedData = await axios.get('https://bfsharingapp.bluefletch.com/feed', today)
+            const feed = feedData.data
+            this.setState({feed: feed})
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 
     displayUser = async() => {
@@ -55,8 +70,14 @@ class Profile extends Component{
                             <Text style={styles.name}>{this.state.username}</Text>
                             <Text style={styles.name}>{`@${this.state.username}`}</Text>
                         </View>
-                        <Footer />
-                        <Feed />
+                        <FlatList 
+                            data={this.state.feed}
+                            renderItem={(post)=> <FeedView
+                                                        postContent = {post.item.postText}
+                                                        user = {post.item.postUser}
+                                                        comments={post.item.comments}
+                                                        postId={post.item._id}/>}
+                            keyExtractor={(post)=>post._id}/>
                 </ScrollView>
             </View>
         )
