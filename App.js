@@ -8,6 +8,7 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Feed from './components/Feed'
 import Post from './components/Post'
+import PostShow from './components/PostShow'
 import EditPost from './components/EditPost'
 
 export default class App extends React.Component {
@@ -22,6 +23,7 @@ export default class App extends React.Component {
           <Scene key='feed' component={Feed} initial/>
           <Scene key='post' component={Post} />
           <Scene key='editPost' component={EditPost} />
+          <Scene key='postShow' component={PostShow} />
         </Stack>
       </Router>
     )

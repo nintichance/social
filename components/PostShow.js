@@ -17,8 +17,8 @@ class PostShow extends Component{
                             <Image style={styles.littlePicture} source={{uri: 'https://i.imgur.com/WBXzxcm.jpg?1' }}/>
                             <View style={styles.topStructure}>
                                 <View style={styles.userName}>
-                                    <Text >USERNAME</Text>
-                                    <Text>USERNAME</Text>
+                                    <Text >{this.props.username}</Text>
+                                    <Text>{`@${this.props.username}`}</Text>
                                 </View>
                                 <View style={styles.react}>
                                     <TouchableOpacity><Icon name='favorite' size={29} color='grey'/></TouchableOpacity>

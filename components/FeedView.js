@@ -9,14 +9,14 @@ class FeedView extends Component{
         showComments: false
     }
     
-    showComments = () => {
-        if(this.state.showComments === false){
-            this.setState({showComments: true})
-        }
-        else{
-            this.setState({showComments: false})
-        }
-    }
+    // showComments = () => {
+    //     if(this.state.showComments === false){
+    //         this.setState({showComments: true})
+    //     }
+    //     else{
+    //         this.setState({showComments: false})
+    //     }
+    // }
 
     render(){
         return(
@@ -32,7 +32,7 @@ class FeedView extends Component{
                         <View style={styles.reactContainer}>
                             <TouchableOpacity onPress={()=> Actions.editPost({postId: this.props.postId, originalPostContent: this.props.postContent})} ><Icon name='mode-edit' size={29} color='#BDBDBD'/></TouchableOpacity>
                             <TouchableOpacity><Icon name='favorite' size={29} color='#BDBDBD'/></TouchableOpacity>
-                            <TouchableOpacity onPress={()=>this.showComments()}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
+                            <TouchableOpacity onPress={()=> Actions.postShow({username: this.props.user.username, comments: this.props.comments})}><Icon name='mode-comment' size={29} color='#BDBDBD'/></TouchableOpacity>
                         </View>    
                 </View>
                 <Text style={styles.postText}>

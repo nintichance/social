@@ -17,7 +17,7 @@ class CommentView extends Component{
 
 styles = StyleSheet.create({
     comments:{
-        backgroundColor: '#D1DFE8',
+        backgroundColor: 'black',
         paddingVertical: 10
     },
     commentBubbles:{
