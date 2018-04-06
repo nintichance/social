@@ -18,3 +18,4 @@ A twitter-like app where you can post updates, view other people's post, and mak
 * [Trello User Stories](https://trello.com/b/sgSaQDLf/fletchr)
 * [Wireframes](https://www.figma.com/file/DIML1LL5S46y5chCF1sZjE/fletchr)
 
+Read about the process and what I learned [here](https://medium.com/@nintichance/building-out-twitter-like-app-307811a6e632). 
